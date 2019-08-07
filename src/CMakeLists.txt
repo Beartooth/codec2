@@ -76,16 +76,17 @@ set(CODEBOOKSNEWAMP2_ENERGY
 
 # when crosscompiling we need a native executable
 if(CMAKE_CROSSCOMPILING)
-    include(ExternalProject)
-    ExternalProject_Add(codec2_native
-       SOURCE_DIR ${CMAKE_SOURCE_DIR}
-       BUILD_COMMAND $(MAKE) generate_codebook
-       INSTALL_COMMAND ${CMAKE_COMMAND} -E copy src/generate_codebook ${CMAKE_CURRENT_BINARY_DIR}
-    )
-    add_executable(generate_codebook IMPORTED)
-    set_target_properties(generate_codebook PROPERTIES
-        IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/generate_codebook)
-    add_dependencies(generate_codebook codec2_native)
+#    include(ExternalProject)
+#    ExternalProject_Add(codec2_native
+#       SOURCE_DIR ${CMAKE_SOURCE_DIR}
+#       BUILD_COMMAND $(MAKE) generate_codebook
+#       INSTALL_COMMAND ${CMAKE_COMMAND} -E copy src/generate_codebook ${CMAKE_CURRENT_BINARY_DIR}
+#    )
+#    add_executable(generate_codebook IMPORTED)
+#    set_target_properties(generate_codebook PROPERTIES
+#        IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/generate_codebook)
+#    add_dependencies(generate_codebook codec2_native)
+    include(ImportExecutables)
 else(CMAKE_CROSSCOMPILING)
 # Build code generator binaries. These do not get installed.
     # generate_codebook
